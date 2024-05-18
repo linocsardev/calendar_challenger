@@ -61,13 +61,21 @@ export class TaskController {
 
   @Delete('delete/:id')
   async remove(@Param('id') id: string, @Body() params: DeleteTaskDto) {
+
     if(id != params.id +''){
       return {
         state: 'failure',
         message: 'El id no es válido'
       }
+    }if(!params.idinstitucion){
+      return {
+        state: 'failure',
+        message: 'el id de la institucion no existe'
+      }
     }
+
     await this.taskService.remove(+id, params.idinstitucion)
+
     return {
       state: "success",
       message: "La tarea a sido eliminada exitosamente!"

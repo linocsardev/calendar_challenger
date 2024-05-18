@@ -55,6 +55,6 @@ export class TaskService {
   }
 
   async remove(id: number, idinstitucion: string) {
-    return await this.taskRepository.delete({id: id, idinstitucion: idinstitucion});
+    return await this.taskRepository.delete({id: id});
   }
 }
